@@ -91,11 +91,9 @@ class Pareja:
         return hash(self.hombre.nombre_completo, self.mujer.nombre_completo)
 
     #--------------------- HIJOS ---------------------#
-    def agregar_hijo(self, hijo: Persona) -> Persona:
+    def agregar_hijo(self, hijo: Persona):  # TODO: No debería devolver Persona, no?
         hijo.progenitores = self
         self.hijos.append(hijo)
-        return hijo
-
 
 
 class ArbolGenealogico:
@@ -222,4 +220,6 @@ class ArbolGenealogico:
 # TODO: Función que complete los apellidos hacia arriba.
 # TODO: Representación gráfica de árboles.
 # TODO: Función que exporte un árbol a un JSON.
+# TODO: Función que importe un árbol desde un JSON
 # TODO: Función que saque los cumpleaños y los ordene por su posición en el año.
+# TODO: Implementar que no puede haber dos personas con la misma clave en un mismo árbol
