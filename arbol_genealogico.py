@@ -28,7 +28,7 @@ class Persona:
     alias: Optional[str] = None
 
     # Progenitores
-    progenitores: Optional[Pareja] = None
+    progenitores: Optional[Pareja] = None  # TODO: Da error porque uso Pareja sin haberla definido
     @property
     def padre(self) -> Optional["Persona"]:
         return self.progenitores.hombre if self.progenitores else None
@@ -83,9 +83,13 @@ class Pareja:
         ##self.hombre.pareja_propia = self
         ##self.mujer.pareja_propia = self
 
+    # TODO: Igualdad de parejas (si tienen mismo hombre y misma mujer son iguales)
+
     #------------- REPRESENTACIÓN Y HASH -------------#
     def __repr__(self) -> str:
         return f"{self.hombre.nombre_completo} & {self.mujer.nombre_completo}"
+
+    # TODO: Claves para parejas
  
     def __hash__(self):
         return hash(self.hombre.nombre_completo, self.mujer.nombre_completo)
@@ -106,7 +110,7 @@ class ArbolGenealogico:
         self._indice_alias: dict[str, list[Persona]] = {}  # Un índice de todos los alias para buscar más rápido
 
     #--------- GESTIÓN DE PERSONAS Y PAREJAS ---------#
-    def agregar_persona(self, persona: Persona) -> Persona:
+    def agregar_persona(self, persona: Persona) -> Persona:  # TODO: No debería devolver Persona, no?
         if persona.clave in self.personas:
             raise ValueError(
                 f"Ya existe una persona con la clave '{persona.clave}'. "
